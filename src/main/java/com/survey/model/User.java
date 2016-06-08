@@ -1,12 +1,32 @@
 package com.survey.model;
 
-public class User {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="User")
+public class User {
+   
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+   private long id;
+
+   @Column(name="username")  
    private String username;
 
+   @Column(name="password")
    private String passwordHash;
 
+   @Column(name="role")
    private Role role;
+   
+   public User(){
+      
+   }
 
    public User(String username, String passwordHash, Role role) {
       super();
@@ -38,9 +58,19 @@ public class User {
    public void setPasswordHash(String passwordHash) {
       this.passwordHash = passwordHash;
    }
-
-   //TODO: Add logic to save survey
-   public boolean saveSurvey(Survey s) {
+   
+   public boolean isAuthor() {
+      if(this.role == Role.AUTHOR){
+         return true;
+      }
       return false;
    }
+   
+   public boolean isGrader() {
+      if(this.role == Role.GRADER){
+         return true;
+      }
+      return false;
+   }
+
 }
