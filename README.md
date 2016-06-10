@@ -1,6 +1,6 @@
 # Survey Rabbit
 -------------
-This is a demo application to show case design and basic implementation of SurveyRabbit. It is based on SpringBoot, Hibernate and MySQL. 
+This is a demo application to demonstrate design and basic implementation of SurveyRabbit. It is based on SpringBoot, Hibernate and MySQL. 
 I chose MySQL because of familiarity, but Hibernate allows replacing database very easily. Hence, Postgres can easily be substituted
 
 ## Architecture
@@ -26,14 +26,44 @@ java -jar SurveyRabbit-0.1.0.jar
 
 
 ## REST API's
+
++ This API gives all the available survey
 ```
 /survey/get/all
 ```
-+ This API gives all the available survey
+
++ This API gives details about a survey based on the Id
 ```
 /survey/get?id=6
 ```
-+ This API gives details about a survey based on the Id
+```javascript
+SAMPLE RESPONSE
+{
+  surveyId: 6,
+  surveyName: "My survey",
+  numberOfResponse: 0,
+  questionList: [
+  {
+    questionId: 11,
+    caption: "What are your hobbies?",
+    options: "nothing,sleeping,eating",
+    type: "MULTI",
+    optionList: [
+      "nothing,sleeping,eating"
+    ]
+  },
+  {
+    questionId: 12,
+    caption: "what is your age?",
+    options: "20-30,30-40,50-100",
+    type: "SINGLE",
+    optionList: [
+    "20-30,30-40,50-100"
+    ]
+  }
+  ]
+}
+```
 
 ## Future Enahncements
 1. Session and Login management using Spring security
