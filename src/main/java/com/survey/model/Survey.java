@@ -1,6 +1,7 @@
 package com.survey.model;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -32,7 +33,7 @@ public class Survey {
 
    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
    @JoinTable(name = "Survey_Question", joinColumns = { @JoinColumn(name = "surveyId") }, inverseJoinColumns = { @JoinColumn(name = "questionId") })
-   private Set<Question> questionList;
+   private List<Question> questionList;
 
 
    public Survey(String name) {
@@ -42,11 +43,11 @@ public class Survey {
    public Survey() {
    }
 
-   public Set<Question> getQuestionList() {
+   public List<Question> getQuestionList() {
       return questionList;
    }
    
-   public void setQuestionList(Set<Question> questionList) {
+   public void setQuestionList(List<Question> questionList) {
       this.questionList = questionList;
    }
 
@@ -54,7 +55,7 @@ public class Survey {
       if (this.questionList != null) {
          this.questionList.add(question);
       } else {
-         this.questionList = new HashSet<>();
+         this.questionList = new ArrayList<>();
          this.questionList.add(question);
       }
    }
@@ -81,6 +82,14 @@ public class Survey {
    
    public int getSurveyId() {
       return surveyId;
+   }
+   
+   public void removeQuestion(int id){
+      for (Question question : questionList) {
+         if(question.getQuestionId() == id){
+            questionList.remove(question);
+         }
+      }
    }
 
 }

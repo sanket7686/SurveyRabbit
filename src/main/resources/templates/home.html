@@ -19,14 +19,14 @@
 		<th:block th:each="survey : ${surveys}">
 			<tr>
 				<td th:text="${survey.surveyName}" />
-				<td th:if="${user.isAuthor()}"><a href="@{/survey/edit(id=${survey.surveyId})}">Edit</a></td>
+				<td th:if="${user.isAuthor()}"><a th:href="@{/survey/edit(id=${survey.surveyId})}">Edit</a></td>
 				<td th:text="${survey.numberOfResponse}" />
 				<td><a th:href="@{/survey/start(id=${survey.surveyId})}">Start</a></td>
 			</tr>
 		</th:block>
 	</table>
 	<div>
-		<div th:if="${user.isAuthor()}"><a href="@{/survey/create(id=${survey.surveyId})}">Create Survey</a></div>
+		<div th:if="${user.isAuthor()}"><a th:href="@{/survey/create}">Create Survey</a></div>
 	</div>
 	
 	

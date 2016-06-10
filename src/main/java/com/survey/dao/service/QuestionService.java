@@ -31,7 +31,7 @@ public class QuestionService {
       return getQuestionDao().getAllQuestions();
    }
    
-   public void addQuestions(Set<Question> questions){
+   public void addQuestions(List<Question> questions){
       getQuestionDao().insertQuestions(questions);
    }
    

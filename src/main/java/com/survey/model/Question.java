@@ -66,4 +66,12 @@ public class Question {
    public List<String> getOptionList() {
       return new ArrayList<String>(Arrays.asList(options.split(" , ")));
    }
+   
+   public long getQuestionId() {
+      return questionId;
+   }
+
+   public void setQuestionId(long questionId) {
+      this.questionId = questionId;
+   }
 }

@@ -28,6 +28,12 @@ public class QuestionDao {
       this.sessionFactory = sessionFactory;
    }
 
+   /**
+    * Inserts question into DB
+    * 
+    * @param Question
+    * 
+    */
    public void insert(Question question) {
       Session session = getSessionFactory().getCurrentSession();
       session.beginTransaction();
@@ -36,7 +42,13 @@ public class QuestionDao {
 
    }
 
-   public void insertQuestions(Set<Question> questions) {
+   /**
+    * Inserts multiple question into DB
+    * 
+    * @param Question
+    * 
+    */
+   public void insertQuestions(List<Question> questions) {
       Session session = getSessionFactory().getCurrentSession();
       session.beginTransaction();
       for (Question q : questions) {
