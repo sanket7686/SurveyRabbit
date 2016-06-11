@@ -34,7 +34,9 @@ public class Survey {
    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
    @JoinTable(name = "Survey_Question", joinColumns = { @JoinColumn(name = "surveyId") }, inverseJoinColumns = { @JoinColumn(name = "questionId") })
    private List<Question> questionList;
-
+   
+   //TODO: Response would go here
+   //private List<Response> responses;
 
    public Survey(String name) {
       this.surveyName = name;
