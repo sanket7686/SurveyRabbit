@@ -5,6 +5,7 @@ public class Response {
 
    private Question question;
 
+   //single select: selected option, multi select: comma separated selected options
    private String answer;
 
    public Question getQuestion() {
